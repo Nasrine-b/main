@@ -17,11 +17,13 @@ Vp=[X(:),Y(:)];
 [x,y]=construct_Vpa(1,sigma_m,sigma_theta,m,theta);
 [X,Y]=meshgrid(x,y);
 Vpa_pol=[X(:),Y(:)];
+figure(1)
+scatter(Vpa_pol(:,1),Vpa_pol(:,2))
 %% Conversion Vpa_pol � Vpa_r
 [x,y]=pol2cart(Vpa_pol(:,1),Vpa_pol(:,2));
 Vpa_r=[x,y];
-figure(1)
-scatter(Vpa_r(:,1),Vpa_r(:,2))
+figure(2)
+scatter(Vpa_r(:,1),Vpa_r(:,1))
 title('Dispersion des vercteurs vitesses')
  %% Calcul des matrices de covariance 
 % M=matrice(Vpa_r);
@@ -30,6 +32,7 @@ title('Dispersion des vercteurs vitesses')
 X=Vpa_r(:,1);
 Y=Vpa_r(:,2);
 M=matco(X,Y);
-Moy_M=Mean_matrix(M);
+Moy_M=Mean_matrix(M); %ne sert a rien
 %% Coefficient de correlation 
+coef_cor=M(1,2)/(sqrt(M(1,1))*sqrt(M(2,2))) %proche de 0 : correlation faible 
 

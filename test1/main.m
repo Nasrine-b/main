@@ -14,13 +14,15 @@ nb_valeurs=[10,50,100,200];
 Vp=[X(:),Y(:)]; 
 %% Construction des Vpa pour un nb_valeurs
 %length(sigma_m)
-[x,y]=construct_Vpa(1,sigma_m,sigma_theta,m,theta);
+[x,y]=construct_Vpa(5,sigma_m,sigma_theta,m,theta);
 [X,Y]=meshgrid(x,y);
 Vpa_pol=[X(:),Y(:)];
+figure(1)
+polar(Vpa_pol(:,2),Vpa_pol(:,1),'o')
 %% Conversion Vpa_pol � Vpa_r
 [x,y]=pol2cart(Vpa_pol(:,1),Vpa_pol(:,2));
 Vpa_r=[x,y];
-figure(1)
+figure(2)
 scatter(Vpa_r(:,1),Vpa_r(:,2))
 title('Dispersion des vercteurs vitesses')
  %% Calcul des matrices de covariance 
