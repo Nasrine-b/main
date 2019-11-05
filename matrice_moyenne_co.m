@@ -1,4 +1,4 @@
-function [res]=moy_mat(matrice)
+function [res]=matrice_moyenne_co(matrice)
 res=0;
 N=length(matrice);
 res=zeros(N);
