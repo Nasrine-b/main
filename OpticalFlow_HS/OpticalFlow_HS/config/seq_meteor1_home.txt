@@ -1,0 +1,11 @@
+src_path      = /Volumes/Echo1/Meteor_sequences/meteor1/pgm/
+filename      = meteor3_
+ndigit        = 4
+dst_path      = /Users/lacas/Code/OpticalFlow/Results/meteor1_FOLKI/
+width         = 1280
+height        = 720
+tstart        = 1
+tstop         = 599
+tstep         = 1
+save          = TRUE
+save_debug    = FALSE

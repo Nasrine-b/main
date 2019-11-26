@@ -1,0 +1,15 @@
+cp hs_operator.c        ../src_export
+cp hs_operator_fast.c   ../src_export
+cp interp.c             ../src_export
+cp interp_extra.c       ../src_export
+cp interp_fix.c         ../src_export
+cp interp_operator.c    ../src_export
+cp nrpyramid.c          ../src_export
+cp of_function.c        ../src_export
+cp of_function_fix.c    ../src_export
+cp of_iter.c            ../src_export
+cp of_main.c            ../src_export
+cp of_score_op.c        ../src_export
+cp parser.c             ../src_export
+cp sequence.c           ../src_export
+cp test_hs_operator_f.c ../src_export
