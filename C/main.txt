@@ -1,0 +1,175 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+typedef struct Matrice{
+	unsigned int nb_l;
+	unsigned int nb_c;
+	int **M;
+}tMatrice;
+
+int ** allocation(int l, int c)
+{
+	int **M;
+	//Allocation mémoire
+	M = (int **) malloc( l* sizeof(int *) );
+	//vérification allocation mémoire
+	if (M == NULL)
+	{
+		printf("Erreur allocation mémoire\n");
+		exit(1);
+	}
+	for(int i=0; i<l;i++)
+	{
+		M[i]=(int *)malloc(c* sizeof(int));
+		//vérification allocation mémoire
+		if (M[i] == NULL)
+		{
+			printf("Erreur allocation mémoire\n");
+			exit(1);
+		}
+	}
+	return M;
+}
+
+tMatrice *allocation_matrice(int l, int c)
+{
+	tMatrice *m;
+	//Allocation mémoire
+	m->M = allocation(l,c);
+	printf("hello\n");
+	m->nb_l = l;
+	m->nb_c = c;
+	return m;
+}
+
+
+void liberation(int **M, int l)
+{
+	//liberation mémoire
+	for(int i=0; i<l;i++)
+	{
+		free(M[i]);
+	}
+	free(M);
+}
+/*fonction innitialise une matrice
+*param M une matrice pointeur
+*param nb_ligne entier 
+*param nb_colonne un entier
+*return initialise la matrice avec des coefs choisis par l'utilisateur 
+*/
+void initialise(int **M, int nb_ligne, int nb_colonne)
+{
+	for (int i = 0; i < nb_ligne; i++)
+	{
+		for (int j = 0; j < nb_colonne; j++)
+		{
+			printf("Entrer un coefficient %d,%d\n",i,j);
+			scanf("%d", &M[i][j]);
+		}
+		printf("\n");
+	}
+}
+
+/*fonction innitialise une matrice à des 0
+*param qstructure matrice avec une matrice et sa taille
+*return rien
+*/
+tMatrice *mat_zeros(int l, int c)
+{
+	tMatrice *res=allocation_matrice(l,c);
+	for (unsigned int i = 0; i < res->nb_l; i++)
+	{
+		for (unsigned int j = 0; j < res->nb_c; j++)
+		{
+			printf("bonjour\n");
+			res->M[i][j]=1-1;
+		}
+	}
+	return res;
+}
+/*fonction affiche une matrice
+*param M une matrice pointeur
+*param nb_ligne entier 
+*param nb_colonne un entier
+*return affichage 
+//remettre a jour
+*/
+void affichage(tMatrice *mat)
+{
+	for (int i = 0; i < mat->nb_l; i++)
+	{
+		for (int j = 0; j < mat->nb_c; j++)
+		{
+			printf(" %d ", mat->M[i][j]);
+		}
+		printf("\n");
+	}
+}
+/* fonction qui réalise un produit matricielle
+*param A une matrice (pointeur)
+*param B une autre matrice (pointeur)
+*param nombre de ligne de A
+*param nombre de ligne de B
+*param nombre de colonne de A
+*param nombre de colonne de B
+*return un pointeur avec le produit des 2 autres matrices
+*/
+int **produit_M(int **A, int **B, int nb_l_A, int nb_l_B,int nb_c_A,int nb_c_B)
+{
+	//vérification faisabilité du produit AB
+	if (nb_c_A != nb_l_B)
+	{
+		printf("Erreur de dimension\n");
+		exit(1);
+	}
+
+	int **res;
+	res = (int **) malloc( nb_l_A* sizeof(int *) );
+	//vérification allocation mémoire
+	if (res == NULL)
+	{
+		printf("Erreur allocation mémoire\n");
+		exit(1);
+	}
+	for(int i=0; i<nb_l_A;i++)
+	{
+		res[i]=(int *)malloc(nb_c_B* sizeof(int));
+		//vérification allocation mémoire
+		if (res[i] == NULL)
+		{
+			printf("Erreur allocation mémoire\n");
+			exit(1);
+		}
+	}
+
+
+	
+	//produit matricielle res=AB
+	for (int i = 0; i < nb_l_A; i++)
+	{
+		for (int j = 0; j < nb_c_B; j++)
+		{
+			res[i][j]=0;
+			for (int k = 0; k < nb_c_B; k++)
+			{
+				res[i][j]=res[i][j]+A[i][k]*B[k][j];
+			}
+		}
+	}
+	return res;
+}
+
+int main()
+{
+	//Déclaration des variables
+	tMatrice *meteor;
+	//------------------------
+	meteor=mat_zeros(5,5);
+	affichage(meteor);
+
+	//liberation(meteor.M,meteor.nb_l);
+
+	return 0;
+}
