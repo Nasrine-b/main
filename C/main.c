@@ -87,12 +87,21 @@ int main()
 	M1=allocation(ligne_M1,colonne_M1);
 	mat_zeros(M1, ligne_M1,colonne_M1);
 
-	// for (int i = 0; i < 10; ++i)
-	// {
-	// 	printf("%d\n", unif(3,5));
-	// }
-	int **vect_alea=runif(0,5,5);
-	affichage(vect_alea,5,1);
+	
+	//int **vect_alea=runif(0,5,5);
+	int *vect=(int *)malloc(1000* sizeof(int));
+	for (int i = 0; i < 1000; ++i)
+	{
+		if (i<500)
+		{*vect=-i;}
+		else
+		{
+			*vect=i;
+		}
+	}
+	
+	int **vect_alea=rnorm(10,100,vect,1000);
+	affichage(vect_alea,1000,1);
 
 //----------------------------------------------------------------
 
@@ -102,6 +111,9 @@ int main()
 
 
  //liberation mémoire
+	
+	free(vect);
+	liberation(vect_alea,1000);
 	liberation(M1,ligne_M1);
 
 

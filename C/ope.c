@@ -33,7 +33,29 @@ int **runif(int borne_inf, int borne_sup, int taille)
 	return m;
 }
 
-// int normal(int mu, int sigma)
-// {
-// 	return gauss= 1/(sigma*sqrt(2*pi)) * exp(-( power(x-mu,2)/(2*power(sigma,2))) );
-// }
+int **rnorm(int mu, int sigma, int *x, int taille)
+{
+
+	int **m;
+
+	m=allocation(taille,1);
+	for (int i = 0; i < taille; ++i)
+	{
+		m[i][0]=1/(sigma*sqrt(2*M_PI)) * exp(-( pow(x[i]-mu,2)/(2*pow(sigma,2))) );
+	}
+
+	return m;
+}
+
+int power_int(int x, int p)
+{
+	if(p==0)
+	{
+		return 1;
+	}
+	if (p==1)
+	{
+		return x; 
+	}
+	return x*power_int(x,p-1);
+}
