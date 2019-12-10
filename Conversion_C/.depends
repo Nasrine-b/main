@@ -1,0 +1,2 @@
+test_parametre.o: test_parametre.c parametre.h
+parametre.o: parametre.c parametre.h
