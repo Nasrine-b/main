@@ -3,6 +3,7 @@
 #include <math.h>
 #include "base_matrice.h"
 #include "ope.h"
+#include "mat_co_var.h"
 
 /* fonction qui réalise un produit matricielle
 *param A une matrice (pointeur)
@@ -61,61 +62,12 @@ int **produit_M(int **A, int **B, int nb_l_A, int nb_l_B,int nb_c_A,int nb_c_B)
 int main()
 {
 	//Déclaration des variables
-	int **M1;
-	int ligne_M1=3;
-	int colonne_M1=3;
-	int unif_test=unif(3,5);
-	//------------------------
+	int dim=4;
+	int ****vect=allocation_sous_mat(dim, dim);
+	sous_mat_zeros(vect,dim,dim);
+	affichage_sous_mat(vect,dim,dim);
 
-	//Affectation M1
-	// printf("Nombre de ligne :");
-	// scanf("%d",&ligne_M1);
-	// while (ligne_M1 <= 0)
-	// {
-	// 	printf("Nombre de lignes incorrect\n Nombre de ligne:");
-	// 	scanf("%d",&ligne_M1);
-	// }
-
-	// printf("Nombre de colonne :");
-	// scanf("%d",&colonne_M1);
-	// while (colonne_M1 <= 0)
-	// {
-	// 	printf("Nombre de colonne incorrect\n Nombre de colonne:");
-	// 	scanf("%d",&colonne_M1);
-	// }
-	
-	M1=allocation(ligne_M1,colonne_M1);
-	mat_zeros(M1, ligne_M1,colonne_M1);
-
-	
-	//int **vect_alea=runif(0,5,5);
-	int *vect=(int *)malloc(1000* sizeof(int));
-	for (int i = 0; i < 1000; ++i)
-	{
-		if (i<500)
-		{*vect=-i;}
-		else
-		{
-			*vect=i;
-		}
-	}
-	
-	int **vect_alea=rnorm(10,100,vect,1000);
-	affichage(vect_alea,1000,1);
-
-//----------------------------------------------------------------
-
-
-	printf("***Affichage de M1:***\n");
-	affichage(M1,ligne_M1,colonne_M1);
-
-
- //liberation mémoire
-	
-	free(vect);
-	liberation(vect_alea,1000);
-	liberation(M1,ligne_M1);
-
+	liberation_sous_mat(vect,dim,dim);
 
 	return 0;
 }

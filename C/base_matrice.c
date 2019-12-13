@@ -50,6 +50,26 @@ void mat_zeros(int **M, int nb_ligne, int nb_colonne)
 		}
 	}
 }
+
+
+/*fonction innitialise une matrice
+*param M une matrice pointeur
+*param nb_ligne entier 
+*param nb_colonne un entier
+*return initialise la matrice avec des coefs choisis par l'utilisateur 
+*/
+void initialise(int **M, int nb_ligne, int nb_colonne)
+{
+	for (int i = 0; i < nb_ligne; i++)
+	{
+		for (int j = 0; j < nb_colonne; j++)
+		{
+			printf("Entrer un coefficient %d,%d\n",i,j);
+			scanf("%d", &M[i][j]);
+		}
+		printf("\n");
+	}
+}
 /*fonction affiche une matrice
 *param M une matrice pointeur
 *param nb_ligne entier 
