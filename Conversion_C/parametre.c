@@ -58,7 +58,7 @@ float f_k(float R1, float R2, float T1, float T2){
 	return (R2*cos(T2-2*T1)-pow(R1,4))/pow((1-R1),3/2);
 }
 
-void circ_data(float* vec, int taille, float* R1, float* R1_b, float* theta, float* V, float* sigma, float* s, float* k){
+void circ_data(float* vec, int taille, float* R1, float* R1_b, float* theta, float* V, float* sigma, float* delta, float* s, float* k){
 
 	//Creation Cp, Cp_b, Sp, Sp_b 
 	float C1=f_C(vec,taille,1);
@@ -86,6 +86,8 @@ void circ_data(float* vec, int taille, float* R1, float* R1_b, float* theta, flo
 	*(V)=f_V(*(R1_b));
 
 	*(sigma)=f_sigma(*(R1_b));
+
+	*(delta)=f_delta(T2,*(R1_b));
 
 	*(s)=f_s(*(R1_b),R2_b,T1,T2);
 

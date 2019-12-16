@@ -22,6 +22,6 @@ float f_s(float R1, float R2, float T1, float T2);
 
 float f_k(float R1, float R2, float T1, float T2);
 
-void circ_data(float* vec, int taille, float* R1, float* R1_b, float* theta, float* V, float* sigma, float* s, float* k); 
+void circ_data(float* vec, int taille, float* R1, float* R1_b, float* theta, float* V, float* sigma, float* delta, float* s, float* k); 
 
 #endif

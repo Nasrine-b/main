@@ -8,7 +8,7 @@ EXEC= exe
 all: $(EXEC)
 
 $(EXEC): $(OBJ)
-	$(CC) $(LIBFLAGS) $^ -o $@  
+	$(CC) $^ -o $@ $(LIBFLAGS)  
 
 %.o: %.c
 	$(CC) $(CCFLAGS) -o $@ -c $<
